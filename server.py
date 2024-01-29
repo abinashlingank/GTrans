@@ -19,7 +19,7 @@ def translate():
 @app.route('/backward',methods=['POST'])
 def backward():
     data=request.json
-    backlan=data["dest"]
+    backlan=data["source"]
     text=data["text"]
     translated=translate_to_tamil(text,backlan)
     return jsonify({"text":translated,"source":data["source"],"dest":data["dest"]})

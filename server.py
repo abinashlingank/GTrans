@@ -1,7 +1,16 @@
 from flask import Flask, request, jsonify
 from trans import translate_to_english
+from fastapi.middleware.cors import CORSMiddleware
 from trans import translate_to_tamil
 app = Flask(__name__)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_credentials=True,
+    allow_methids=["GET", "POST", "DELETE", "PUT"],
+    allow_headers=['*']
+)
 
 @app.route('/forward', methods=['POST'])
 def translate():
